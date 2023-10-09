@@ -38,7 +38,9 @@ export class SourceCodeExtractApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(fileExtractRequest, "FileExtractRequest", ""),
@@ -47,11 +49,6 @@ export class SourceCodeExtractApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["hapikey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
         // Apply auth methods
         authMethod = _config.authMethods["oauth2"]
         if (authMethod?.applySecurityAuthentication) {
@@ -88,11 +85,6 @@ export class SourceCodeExtractApiRequestFactory extends BaseAPIRequestFactory {
 
 
         let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["hapikey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
         // Apply auth methods
         authMethod = _config.authMethods["oauth2"]
         if (authMethod?.applySecurityAuthentication) {

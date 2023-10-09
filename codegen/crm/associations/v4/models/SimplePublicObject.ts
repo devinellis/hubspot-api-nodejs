@@ -13,44 +13,20 @@
 import { ValueWithTimestamp } from '../models/ValueWithTimestamp';
 
 export class SimplePublicObject {
-    'id': string;
-    'properties': { [key: string]: string; };
-    'propertiesWithHistory'?: { [key: string]: Array<ValueWithTimestamp>; };
     'createdAt': Date;
-    'updatedAt': Date;
     'archived'?: boolean;
     'archivedAt'?: Date;
+    'propertiesWithHistory'?: { [key: string]: Array<ValueWithTimestamp>; };
+    'id': string;
+    'properties': { [key: string]: string | null; };
+    'updatedAt': Date;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "properties",
-            "baseName": "properties",
-            "type": "{ [key: string]: string; }",
-            "format": ""
-        },
-        {
-            "name": "propertiesWithHistory",
-            "baseName": "propertiesWithHistory",
-            "type": "{ [key: string]: Array<ValueWithTimestamp>; }",
-            "format": ""
-        },
-        {
             "name": "createdAt",
             "baseName": "createdAt",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "updatedAt",
-            "baseName": "updatedAt",
             "type": "Date",
             "format": "date-time"
         },
@@ -63,6 +39,30 @@ export class SimplePublicObject {
         {
             "name": "archivedAt",
             "baseName": "archivedAt",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "propertiesWithHistory",
+            "baseName": "propertiesWithHistory",
+            "type": "{ [key: string]: Array<ValueWithTimestamp>; }",
+            "format": ""
+        },
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "properties",
+            "baseName": "properties",
+            "type": "{ [key: string]: string | null; }",
+            "format": ""
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updatedAt",
             "type": "Date",
             "format": "date-time"
         }    ];

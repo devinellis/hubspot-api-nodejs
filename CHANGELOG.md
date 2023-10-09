@@ -5,7 +5,93 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-nodejs/compare/9.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-nodejs/compare/10.0.0...HEAD)
+
+## [10.0.0] - 2023-09-25
+
+## Updated
+
+- `cms.auditLogs.auditLogsApi.getPage(objectId?: Array<string>, userId?: Array<string>, after?: string, before?: string, sort?: Array<string>, eventType?: Array<string>, limit?: number, objectType?: Array<string>, _options?: Configuration)` => `cms.auditLogs.auditLogsApi.getPage(userId?: Array<string>, eventType?: Array<string>, objectType?: Array<string>, objectId?: Array<string>, after?: string, before?: string, limit?: number, sort?: Array<string>, _options?: Configuration)`
+- Cnange type from `number` to `string` in `cms/hubdb/models/HubDbTableRowV3BatchUpdateRequest.id`.
+- Nullable `startDatetime`, `endDatetime` and `totalRequestTime` in `cms/performance/models/PerformanceView`.
+- Rename `cms.sourceCode.contentApi.get()` => `cms.sourceCode.contentApi.download()`
+- Rename `cms.sourceCode.contentApi.replace()` => `cms.sourceCode.contentApi.createOrUpdate()`
+- `crm.timeline.eventsApi.createBatch() BatchResponseTimelineEventResponse | BatchResponseTimelineEventResponseWithErrors` => `crm.timeline.eventsApi.createBatch() BatchResponseTimelineEventResponse | void | BatchResponseTimelineEventResponseWithErrors`
+- Cnange type from `ErrorCategory` to `string` in `crm/timeline/models/StandardError::category`.
+- Nullable `options` in `crm/timeline/models/TimelineEventTemplateToken` and `codegen/crm/timeline/models/TimelineEventTemplateTokenUpdateRequest`.
+- Required `links` in `files/models/FolderUpdateTaskLocator` and `files/models/ImportFromUrlTaskLocator`.
+- Nullable `duplicateValidationStrategy`, `duplicateValidationScope` and `overwrite` in `files/models/ImportFromUrlInput`.
+- Cnange type from `ErrorCategory` to `string` in `files/models/StandardError::category`.
+- Move method `archive` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `create` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `doCancel` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `getById` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `replace` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `update` from `marketing.events.marketingEventsExternalApi` to `marketing.events.basicApi`.
+- Move method `archiveBatch` from `marketing.events.marketingEventsExternalApi` to `marketing.events.batchApi`.
+- Move method `doUpsert` from `marketing.events.marketingEventsExternalApi` to `marketing.events.batchApi`.
+- Move method `doEmailUpsertById` from `marketing.events.marketingEventsExternalApi` to `marketing.events.subscriberStateChanges`.
+- Move method `doUpsertById` from `marketing.events.marketingEventsExternalApi` to `marketing.events.subscriberStateChanges`.
+- Rename `marketing.events.settingsExternalApi` => `marketing.events.settingsApi`
+- Cnange type from `ErrorCategory` to `string` in `marketing/events/models/StandardError::category`.
+
+## Added
+
+- Added param `prev` to `cms/audit_logs/models/PreviousPage`.
+- Added param `properties` to `cms.sourceCode.metadataApi.get()`.
+- Added param `hash` to `cms/source_code/models/AssetFileMetadata`.
+- Added method `getMetadata` to `files.filesApi`.
+- Added param `expiresAt` to `files/models/FileUpdateInput` and `files/models/ModelFile`.
+- Added params `roleIds`, `sendWelcomeEmail` and `superAdmin` to `settings/users/models/PublicUser`
+
+## [9.1.1] - 2023-08-16
+
+## Fixed
+
+- Nullable `properties` in `SimplePublicObject` and `SimplePublicObjectWithAssociations` (all crm object's clients).
+
+## [9.1.0] - 2023-07-27
+
+## Removed `hapikey` from
+
+- `automation.actions.callbacksApi` Api.
+- `cms` (all Api clients).
+- `communicationPreferences` (all Api clients).
+- `conversations` (all API clients).
+- `crm` (all Api clients).
+- `events` (all Api clients).
+- `files` (all Api clients).
+- `marketing.events.settingsExternalApi` Api.
+- `marketing.transactional` Api client.
+
+## Updated
+
+- Cnange type from `object` to `string` in `cms/hubdb/models/StandardError.category`.
+- Cnange type from `StandardError[]` to `StandardError1[]` in `crm/associations/v4/models/BatchResponseSimplePublicObjectWithErrors::errors`.
+- Cnange type from `ErrorCategory` to `string` in `crm/companies/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/contacts/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/deals/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/lineitems/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/calls/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/communications/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/emails/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/feedback_submissions/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/meetings/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/notes/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/postal_mail/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/objects/tasks/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/products/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/properties/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/quotes/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `crm/tickets/models/StandardError::category`.
+- Cnange type from `ErrorCategory` to `string` in `webhooks/models/StandardError::category`.
+
+## [9.0.1] - 2023-07-26
+
+## Fixed
+
+- Remove console.error message indicating a response status code (Retry mechanism).
 
 ## [9.0.0] - 2023-06-08
 
@@ -619,3 +705,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [9.0.0-beta.2]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.0.0-beta.2
 [9.0.0-beta.3]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.0.0-beta.3
 [9.0.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.0.0
+[9.0.1]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.0.1
+[9.1.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.1.0
+[9.1.1]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.1.1
+[10.0.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/10.0.0

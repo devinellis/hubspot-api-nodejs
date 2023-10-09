@@ -90,7 +90,7 @@ export class AttendanceSubscriberStateChangesApiRequestFactory extends BaseAPIRe
     }
 
     /**
-     * Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params 
+     * Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created.
      * Record
      * @param externalEventId The id of the marketing event
      * @param subscriberState The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;.
