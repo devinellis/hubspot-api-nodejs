@@ -23,6 +23,9 @@ const hubspot = require('@hubspot/api-client')
 const hubspotClient = new hubspot.Client({ accessToken: YOUR_ACCESS_TOKEN })
 ```
 
+> [!NOTE]
+> Please note that all code examples are written in JavaScript. Some of them won’t work in Typescript without changes.
+
 For ES modules
 
 ```javascript
@@ -160,11 +163,23 @@ await hubspotClient.crm.associations.v4.basicApi.create(
     [
         {
               "associationCategory": "HUBSPOT_DEFINED",
-              "associationTypeId": AssociationTypes.companyToContact 
+              "associationTypeId": AssociationTypes.companyToContact
               // AssociationTypes contains the most popular HubSpot defined association types
         }
     ]
 )
+```
+
+### {EXAMPLE} Get associated Companies by Contact
+
+```javascript
+const companies = await hubspotClient.crm.associations.v4.basicApi.getPage(
+    'contact',
+    hubspotContactId,
+    'company',
+    after,
+    pageSize,
+  );
 ```
 
 ### {EXAMPLE} Update multiple objects in batch mode
@@ -246,7 +261,7 @@ In TS `sorts` it's possible to set as:
 
 `after` for initial search should be set as 0
 
-Exapmle for JS:
+Example for JS:
 
 ```javascript
 const publicObjectSearchRequest = {
@@ -258,7 +273,7 @@ const publicObjectSearchRequest = {
             operator: 'GTE',
             value: `${Date.now() - 30 * 60000}`
         }
-        ] 
+        ]
     }
     ],
     sorts: [{ propertyName: 'createdate', direction: 'DESCENDING' }],
@@ -272,7 +287,7 @@ const response = await hubspotClient.crm.contacts.searchApi.doSearch(publicObjec
 console.log(response)
 ```
 
-Exapmle for TS:
+Example for TS:
 
 ```Typescript
 const objectSearchRequest: PublicObjectSearchRequest = {
@@ -290,7 +305,7 @@ const objectSearchRequest: PublicObjectSearchRequest = {
     sorts: ["-createdate"],
     properties: ["email", "createdate"],
     limit: 100,
-    after: 0,
+    after: '0',
 };
 
 const response = await hubspotClient.crm.contacts.searchApi.doSearch(objectSearchRequest);
@@ -321,7 +336,7 @@ const response = await hubspotClient.files.filesApi.upload(
     '/folder',
     'photo.jpg',
     undefined,
-    JSON.stringify({ 
+    JSON.stringify({
         access: 'PRIVATE',
         overwrite: false,
         duplicateValidationStrategy: 'NONE',
@@ -410,11 +425,11 @@ console.log(response);
 
 ## Reserved words
 
-The SDK has reserved words(e.g. `from`). [Full list of reserved words.](https://openapi-generator.tech/docs/generators/typescript#reserved-words)
-When you face with a reserved word you have to add `_` before the word(e.g. `_from`).
+The SDK has reserved words(e.g. `from`, `in`). [Full list of reserved words.](https://openapi-generator.tech/docs/generators/typescript#reserved-words)
+When you face with a reserved word you have to add `_` before the word(e.g. `_from`, `_in`).
 
 ```javascript
-const BatchInputPublicAssociation = { 
+const BatchInputPublicAssociation = {
     inputs: [
         {
             _from: {
@@ -425,7 +440,7 @@ const BatchInputPublicAssociation = {
             },
             type: 'contact_to_company'
         }
-    ] 
+    ]
 };
 
 const response = await hubspotClient.crm.associations.batchApi.create(

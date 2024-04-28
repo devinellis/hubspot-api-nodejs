@@ -5,7 +5,111 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-nodejs/compare/10.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-nodejs/compare/11.1.0...HEAD)
+
+## [11.1.0] - 2024-02-29
+
+## Added
+
+- Added param `idProperty` to `SimplePublicObjectBatchInput` in all CRM clients.
+
+## [11.0.0] - 2024-02-13
+
+## Updated
+
+- `crm.associations.v4.basicApi.archive(objectType: string, objectId: number, toObjectType: string, toObjectId: number, _options?: Configuration)` => `crm.associations.v4.basicApi.archive(objectType: string, objectId: string, toObjectType: string, toObjectId: string, _options?: Configuration)`
+- `crm.associations.v4.basicApi.create(objectType: string, objectId: number, toObjectType: string, toObjectId: number, associationSpec: Array<AssociationSpec>, _options?: Configuration): Promise<LabelsBetweenObjectPair1>` => `crm.associations.v4.basicApi.create(objectType: string, objectId: string, toObjectType: string, toObjectId: string, associationSpec: Array<AssociationSpec>, _options?: Configuration): Promise<LabelsBetweenObjectPair>`
+- `crm.associations.v4.basicApi.createDefault(fromObjectType: string, fromObjectId: number, toObjectType: string, toObjectId: number, _options?: Configuration)` => `crm.associations.v4.basicApi.createDefault(fromObjectType: string, fromObjectId: string, toObjectType: string, toObjectId: string, _options?: Configuration)`
+- `crm.associations.v4.basicApi.getPage(objectType: string, objectId: number, toObjectType: string, after?: string, limit?: number, _options?: Configuration)` => `crm.associations.v4.basicApi.getPage(objectType: string, objectId: string, toObjectType: string, after?: string, limit?: number, _options?: Configuration)`
+- Cnange type from `number` to `string` in `crm/associations/v4/models/MultiAssociatedObjectWithLabel::toObjectId`.
+- Added param `'inverseLabel'?: string` to `crm/associations/v4/schema/models/PublicAssociationDefinitionCreateRequest` and `crm/associations/v4/schema/models/PublicAssociationDefinitionUpdateRequest`.
+- Added new association types to `enums/AssociationTypes`.
+
+## [11.0.0-beta.0] - 2024-01-31
+
+## Updated
+
+- `automation.actions.definitionsAPI.create(appId: number, extensionActionDefinitionInput: ExtensionActionDefinitionInput):Promise<ExtensionActionDefinition>` => `automation.actions.definitionsAPI.create(appId: number, publicActionDefinitionEgg: PublicActionDefinitionEgg):Promise<PublicActionDefinition>`.
+- `automation.actions.definitionsAPI.getById():Promise<ExtensionActionDefinition>` => `automation.actions.definitionsAPI.getById():Promise<PublicActionDefinition>`.
+- `automation.actions.definitionsAPI.update(definitionId: string, appId: number, extensionActionDefinitionPatch: ExtensionActionDefinitionPatch):Promise<ExtensionActionDefinition>` => `automation.actions.definitionsAPI.update(definitionId: string, appId: number, publicActionDefinitionPatch: PublicActionDefinitionPatch):Promise<PublicActionDefinition>`.
+- `automation.actions.definitionsAPI.getPage():Promise<CollectionResponseExtensionActionDefinitionForwardPaging>` => `automation.actions.definitionsAPI.getPage():Promise<CollectionResponsePublicActionDefinitionForwardPaging>`.
+- Added new function type `POST_ACTION_EXECUTION` to all methods of `automation.actions.functionsApi`.
+- `automation.actions.functionsApi.createOrReplace():Promise<ActionFunctionIdentifier>` => `automation.actions.functionsApi.createOrReplace():Promise<PublicActionFunctionIdentifier >`.
+- `automation.actions.functionsApi.createOrReplaceByFunctionType():Promise<ActionFunctionIdentifier>` => `automation.actions.functionsApi.createOrReplaceByFunctionType():Promise<PublicActionFunctionIdentifier >`.
+- `automation.actions.functionsApi.getByFunctionType():Promise<ActionFunction>` => `automation.actions.functionsApi.getByFunctionType():Promise<PublicActionFunction>`.
+- `automation.actions.functionsApi.getById():Promise<ActionFunction>` => `automation.actions.functionsApi.getById():Promise<PublicActionFunction>`.
+- `automation.actions.functionsApi.getPage():Promise<CollectionResponseActionFunctionIdentifierNoPaging>` => `automation.actions.functionsApi.getPage():Promise<CollectionResponsePublicActionFunctionIdentifierNoPaging>`.
+- `automation.actions.revisionsApi.getById():Promise<ActionRevision>` => `automation.actions.revisionsApi.getById():Promise<PublicActionRevision>`.
+- `automation.actions.revisionsApi.getPage():Promise<CollectionResponseActionRevisionForwardPaging>` => `automation.actions.revisionsApi.getPage():Promise<CollectionResponsePublicActionRevisionForwardPaging>`.
+- Added param `property` to `cms.blogs.authors.blogAuthorsApi.getById()`.
+- Added param `property` to `cms.blogs.authors.blogAuthorsApi.getPage()`.
+- Changed type from laguages enum to `string` in `cms/blogs/authors/models/AttachToLangPrimaryRequestVNext::language` and `cms/blogs/authors/models/AttachToLangPrimaryRequestVNext::primaryLanguage`.
+- Added param `property` to `cms.blogs.blogPosts.blogPostsApi.getById()`.
+- Added param `property` to `cms.blogs.blogPosts.blogPostsApi.getPage()`.
+- Changed type from laguages enum to `string` in `cms/blogs/blog_posts/models/AttachToLangPrimaryRequestVNext::language` and `cms/blogs/blog_posts/models/AttachToLangPrimaryRequestVNext::primaryLanguage`.
+- Cnange type from `SideOrCornerVerticalSideEnum` to `string` in `cms/blogs/blog_posts/models/SideOrCorner::verticalSide`.
+- Cnange type from `SideOrCornerHorizontalSideEnum` to `string` in `cms/blogs/blog_posts/models/SideOrCorner::horizontalSide`.
+- Cnange type from `StylesVerticalAlignmentEnum` to `string` in `cms/blogs/blog_posts/models/Styles::verticalAlignment`.
+- Cnange type from `StylesFlexboxPositioningEnum` to `string` in `cms/blogs/blog_posts/models/Styles::flexboxPositioning`.
+- Added param `property` to `cms.blogs.tags.blogTagsApi.getById()`.
+- Added param `property` to `cms.blogs.tags.blogTagsApi.getPage()`.
+- Changed type from laguages enum to `string` in `cms/blogs/tags/models/AttachToLangPrimaryRequestVNext::language` and `cms/blogs/tags/models/AttachToLangPrimaryRequestVNext::primaryLanguage`.
+- Cnange type from `ErrorCategory` to `string` in `crm/associations/models/StandardError::category`.
+- `crm.associations.v4.basicApi.create(): Promise<LabelsBetweenObjectPair>` => `crm.associations.v4.basicApi.create(): Promise<LabelsBetweenObjectPair1>`
+- Cnange type from `ErrorCategory` to `string` in `crm/associations/v4/models/StandardError::category`.
+- Rename `crm.associations.v4.schema.definitionsApi._delete()` => `crm.associations.v4.schema.definitionsApi.archive()`.
+- Removed `crm.objects.associationsApi`.
+- Cnange type from `number` to `string` in `PublicObjectSearchRequest::after` in all CRM clients.
+- `crm.objects.postalMail.basicApi.archive(postalMail: string, _options?: Configuration)` => `crm.objects.postalMail.basicApi.archive(postalMailId: string, _options?: Configuration)`.
+- `crm.objects.postalMail.basicApi.getById(postalMail: string, properties?: Array<string>, propertiesWithHistory?: Array<string>, associations?: Array<string>, archived?: boolean, idProperty?: string, _options?: Configuration)` => `crm.objects.postalMail.basicApi.getById(postalMailId: string, properties?: Array<string>, propertiesWithHistory?: Array<string>, associations?: Array<string>, archived?: boolean, idProperty?: string, _options?: Configuration)`.
+- `crm.objects.postalMail.basicApi.update(postalMail: string, simplePublicObjectInput: SimplePublicObjectInput, idProperty?: string, _options?: Configuration)` => `crm.objects.postalMail.basicApi.update(postalMailId: string, simplePublicObjectInput: SimplePublicObjectInput, idProperty?: string, _options?: Configuration)`.
+- Added param `validateDealStageUsagesBeforeDelete` to `cms.pipelines.pipelinesApi.archive()`, `cms.pipelines.pipelinesApi.replace()` and `cms.pipelines.pipelinesApi.update()`.
+- `events.eventsApi.getPage(occurredAfter?: Date, occurredBefore?: Date, objectType?: string, objectId?: number, eventType?: string, after?: string, before?: string, limit?: number, sort?: Array<string>, _options?: Configuration)` => `events.eventsApi.getPage(objectType?: string, eventType?: string, occurredAfter?: Date, occurredBefore?: Date, objectId?: number, indexTableName?: string, indexSpecificMetadata?: string, after?: string, before?: string, limit?: number, sort?: Array<string>, objectPropertyPropname?: any, propertyPropname?: any, id?: Array<string>, _options?: Configuration)`
+- Rewrite all enums from type to enum.
+
+```typescript
+export type Enum = "OPTION1" | "OPTION2";
+// =>
+export enum Enum {
+    Option1 = 'OPTION1',
+    Option2 = 'OPTION2'
+}
+```
+
+## Added
+
+- `crm.companies.gdprApi` API client.
+- `crm.deals.gdprApi` API client.
+- `crm.extensions.calling.recordingSettingsApi` API client.
+- `crm.line_items.gdprApi` API client.
+- `crm.objects.calls.gdprApi` API client.
+- `crm.objects.communications.gdprApi` API client.
+- `crm.objects.emails.gdprApi` API client.
+- `crm.objects.feedbackSubmissions.gdprApi` API client.
+- `crm.objects.meetings.gdprApi` API client.
+- `crm.objects.notes.gdprApi` API client.
+- `crm.objects.postalMail.gdprApi` API client.
+- `crm.objects.tasks.gdprApi` API client.
+- `crm.products.gdprApi` API client.
+- `crm.quotes.gdprApi` API client.
+- `crm.tickets.gdprApi` API client.
+
+## [10.2.0] - 2023-12-13
+
+## Added
+
+- `cms.pages` Api client.
+- `crm.lists` Api client.
+- `crm.objects.goals` Api client.
+- `crm.objects.taxes` Api client.
+- `events.send` Api client.
+- `settings.businessUnits` Api client.
+
+## [10.1.0] - 2023-11-23
+
+## Added
+
+- `marketing.forms` Api client.
 
 ## [10.0.0] - 2023-09-25
 
@@ -34,6 +138,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move method `doUpsertById` from `marketing.events.marketingEventsExternalApi` to `marketing.events.subscriberStateChanges`.
 - Rename `marketing.events.settingsExternalApi` => `marketing.events.settingsApi`
 - Cnange type from `ErrorCategory` to `string` in `marketing/events/models/StandardError::category`.
+- `crm.extensions.cards.cardsApi.archive(appId: number, cardId: string, _options?: Configuration)` => `crm.extensions.cards.cardsApi.archive(cardId: string, appId: number, _options?: Configuration)`
+- `crm.extensions.cards.cardsApi.getById(appId: number, cardId: string, _options?: Configuration): Promise<CardResponse >` => `crm.extensions.cards.cardsApi.getById(cardId: string, appId: number, _options?: Configuration): Promise<PublicCardResponse >`
+- `crm.extensions.cards.cardsApi.update(appId: number, cardId: string, cardPatchRequest: CardPatchRequest, _options?: Configuration): Promise<CardResponse >` => `crm.extensions.cards.cardsApi.update(cardId: string, appId: number, cardPatchRequest: CardPatchRequest, _options?: Configuration): Promise<PublicCardResponse >`
+- `crm.extensions.cards.cardsApi.create(): Promise<CardResponse >` => `crm.extensions.cards.cardsApi.create(): Promise<PublicCardResponse >`
+- `crm.extensions.cards.cardsApi.getAll(): Promise<CardListResponse >` => `crm.extensions.cards.cardsApi.getAll(): Promise<PublicCardListResponse >`:
+
 
 ## Added
 
@@ -132,12 +242,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Updated
 
 - Rename `cms.hubdb.rowsBatchApi.batchCloneDraftTableRows()` => `cms.hubdb.rowsBatchApi.cloneDraftTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchCreateDraftTableRows()` => `cms.hubdb.rowsBatchApi. createDraftTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchPurgeDraftTableRows()` => `cms.hubdb.rowsBatchApi. purgeDraftTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchReadDraftTableRows()` => `cms.hubdb.rowsBatchApi. readDraftTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchReadTableRows()` => `cms.hubdb.rowsBatchApi. readTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchReplaceDraftTableRows()` => `cms.hubdb.rowsBatchApi. replaceDraftTableRows()`.
-- Rename `cms.hubdb.rowsBatchApi.batchUpdateDraftTableRows()` => `cms.hubdb.rowsBatchApi. updateDraftTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchCreateDraftTableRows()` => `cms.hubdb.rowsBatchApi.createDraftTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchPurgeDraftTableRows()` => `cms.hubdb.rowsBatchApi.purgeDraftTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchReadDraftTableRows()` => `cms.hubdb.rowsBatchApi.readDraftTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchReadTableRows()` => `cms.hubdb.rowsBatchApi.readTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchReplaceDraftTableRows()` => `cms.hubdb.rowsBatchApi.replaceDraftTableRows()`.
+- Rename `cms.hubdb.rowsBatchApi.batchUpdateDraftTableRows()` => `cms.hubdb.rowsBatchApi.updateDraftTableRows()`.
 - `cms.hubdb.tablesApi.getDraftTableDetailsById(tableIdOrName: string, archived?: boolean, includeForeignIds?: boolean, _options?: Configuration)` => `cms.hubdb.tablesApi.getDraftTableDetailsById(tableIdOrName: string, includeForeignIds?: boolean, archived?: boolean, _options?: Configuration)`
 - `cms.hubdb.tablesApi.getTableDetails(tableIdOrName: string, archived?: boolean, includeForeignIds?: boolean, _options?: Configuration)` => `cms.hubdb.tablesApi.getTableDetails(tableIdOrName: string, includeForeignIds?: boolean, archived?: boolean, _options?: Configuration)`
 - `cms.hubdb.tablesApi.updateDraftTable(tableIdOrName: string, hubDbTableV3Request: HubDbTableV3Request, archived?: boolean, includeForeignIds?: boolean, _options?: Configuration)` => `cms.hubdb.tablesApi.updateDraftTable(tableIdOrName: string, hubDbTableV3Request: HubDbTableV3Request, includeForeignIds?: boolean, archived?: boolean, _options?: Configuration)`
@@ -293,7 +403,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Updated
 
 - Replace Lodash to navite code in part of code
-- Load only merge and get methods form Lodash 
+- Load only merge and get methods form Lodash
 
 ## [8.1.0] - 2022-11-28
 
@@ -312,7 +422,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Updated
 
 - Optimization memory usage
-- Regenerate all clients 
+- Regenerate all clients
 - Added Private App access token to `cms.performance`, `crm.schemas` , `crm.imports` and `crm.objects.feedbackSubmissions`
 - Updated `marketing.events` API client
 - Deprecated `crm.extensions.accounting` API client
@@ -337,7 +447,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Sinature Utill 
+- Sinature Utill
 
 ### Deprecated
 
@@ -401,8 +511,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Update
 
- - rename crm.pipelines.pipelineStagesApi.getCrmV3PipelinesObjectTypePipelineIdAudit() => crm.pipelines.pipelineStagesApi.getAudit()
- - rename crm.pipelines.pipelinesApi.getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit() => crm.pipelines.pipelinesApi.getAudit()
+- rename crm.pipelines.pipelineStagesApi.getCrmV3PipelinesObjectTypePipelineIdAudit() => crm.pipelines.pipelineStagesApi.getAudit()
+- rename crm.pipelines.pipelinesApi.getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit() => crm.pipelines.pipelinesApi.getAudit()
 
 ## [6.0.1-beta4] - 2022-03-29
 
@@ -419,13 +529,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
- - fixed TimelineEvents
- - fixed Webhooks double appId
+- fixed TimelineEvents
+- fixed Webhooks double appId
 
-### Update
+### Updated
 
- - rename crm.contants.gdpr.postCrmV3ObjectsContactsGdprDelete() => crm.contants.gdpr.purge()
- - rename crm.objects.gdpr.postCrmV3ObjectsContactsGdprDelete() => crm.objects.gdpr.purge()
+- rename crm.contants.gdpr.postCrmV3ObjectsContactsGdprDelete() => crm.contants.gdpr.purge()
+- rename crm.objects.gdpr.postCrmV3ObjectsContactsGdprDelete() => crm.objects.gdpr.purge()
 
 ## [6.0.1-beta3] - 2022-02-18
 
@@ -433,13 +543,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - apiRequest()
 
-### Update
+### Updated
 
- - Regenerate Codegen
+- Regenerate Codegen
 
 ## [6.0.1-beta2] - 2022-02-09
 
-### Fixed 
+### Fixed
 
 - autification configuration
 
@@ -453,7 +563,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Iterable middlewares 
+- Iterable middlewares
 
 ## [6.0.0-beta] - 2022-01-27
 
@@ -489,37 +599,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-  - communicationPreferences API client
+- communicationPreferences API client
 
 ## [4.0.0] - 2021-06-22
 
 ### Fixed
 
-  - rename method "search" => "doSearch" crm.objects.searchApi API clients
-  - regenerate all clients
+- rename method "search" => "doSearch" crm.objects.searchApi API clients
+- regenerate all clients
 
 ## [3.4.1] - 2021-02-17
 
 ### Fixed
 
-  - fix generateToken method in `conversations.visitorIdentification` API clients
+- fix generateToken method in `conversations.visitorIdentification` API clients
 
 ## [3.4.0] - 2021-02-16
 
 ### Added
 
-  - conversations.visitorIdentification API client
-  - events API client
+- conversations.visitorIdentification API client
+- events API client
 
 ## [3.3.0] - 2021-02-10
 
 ### Added
 
-  - crm.extensions.accounting API client
-  - crm.extensions.calling API client
-  - crm.extensions.videoconferencing API client
-  - crm.objects.feedbackSubmissions API client
-  - marketing.transactional API client
+- crm.extensions.accounting API client
+- crm.extensions.calling API client
+- crm.extensions.videoconferencing API client
+- crm.objects.feedbackSubmissions API client
+- marketing.transactional API client
 
 ## [3.2.6] - 2021-01-28
 
@@ -537,63 +647,63 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-  - automation.actions client
+- automation.actions client
 
 ## [3.1.0] - 2020-12-15
 
 ### Added
 
-  - crm.objects and crm.schemas clients  
-  - cms.hubdb clients
-  - cms.blogs.authors, cms.blogs.blogPosts and cms.blogs.tags clients
+- crm.objects and crm.schemas clients
+- cms.hubdb clients
+- cms.blogs.authors, cms.blogs.blogPosts and cms.blogs.tags clients
 
 ## [3.0.0] - 2020-08-28
-  
+
 ### Added
-  
-  - differentiation between Developer API key and API key. There is no need to create separate client instances for using endpoints with API key and Developer API key support.  
+
+- differentiation between Developer API key and API key. There is no need to create separate client instances for using endpoints with API key and Developer API key support.
 
 ### Updated
 
-  - SubscriptionPatchRequest model (replace `enabled` with `active` property)
-  - removed optional attribute for some parameters in crm clients methods
-  - changed parameters order for all crm.**.batchApi.read methods
-  - removed all create/update methods from CRM quotes
-  - response types extended for all crm.**.batchApi.create/read/update methods
+- SubscriptionPatchRequest model (replace `enabled` with `active` property)
+- removed optional attribute for some parameters in crm clients methods
+- changed parameters order for all crm.**.batchApi.read methods
+- removed all create/update methods from CRM quotes
+- response types extended for all crm.**.batchApi.create/read/update methods
 
 ## [2.1.1] - 2020-07-24
-  
+
 ### Added
-  
-  - trello-integration-app sample
-  - 'Search Contacts' example to README.MD
+
+- trello-integration-app sample
+- 'Search Contacts' example to README.MD
 
 ### Fixed
 
-  - fixed initial initialization for webhooks-app
-  - fixed webhook verification for webhooks-app
-  - `getAll` methods for CRM objects (for clients with disabled limiter)
-  - 'Create Contact, Company and associate created objects' example in README.md
+- fixed initial initialization for webhooks-app
+- fixed webhook verification for webhooks-app
+- `getAll` methods for CRM objects (for clients with disabled limiter)
+- 'Create Contact, Company and associate created objects' example in README.md
 
 ## [2.1.0] - 2020-06-18
-  
+
 ### Added
-  
-  - auditLogs, domains, performance, urlRedirects and siteSearch cms clients
-  - imports-contacts-app sample
-  - limiter for search methods
-  - search-results-paging-app sample
+
+- auditLogs, domains, performance, urlRedirects and siteSearch cms clients
+- imports-contacts-app sample
+- limiter for search methods
+- search-results-paging-app sample
 
 ### Updated
 
-  - default limiter options: increased `maxConcurrent` to 6, added `id` - 'hubspot-client-limiter'
-  - retry functionality to overcome secondly search limit failures 
+- default limiter options: increased `maxConcurrent` to 6, added `id` - 'hubspot-client-limiter'
+- retry functionality to overcome secondly search limit failures
 
 ## [2.0.1] - 2020-05-25
 
 ### Added:
 
-- validateSignature method to webhooks 
+- validateSignature method to webhooks
 
 ## [2.0.0] - 2020-05-06
 
@@ -602,20 +712,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated crm.imports.coreApi client method names: getAll => getPage
 
 ## [1.1.0-beta] - 2020-04-24
-  
+
 ### Added
-  
-  - New updateBatch method to webhooks.subscriptionsApi
-  - updated timelineModels
+
+- New updateBatch method to webhooks.subscriptionsApi
+- updated timelineModels
 
 ### Updated
 
-  - extended webhooks-sample-app to setup application webhooks configuration after successful authorization
-  - documents path in sample-app
-  
+- extended webhooks-sample-app to setup application webhooks configuration after successful authorization
+- documents path in sample-app
+
 ### Fixed
 
-  - 'apiKey' authorization for webhooks clients
+- 'apiKey' authorization for webhooks clients
 
 ## [1.0.0-beta] - 2020-04-18
 
@@ -653,7 +763,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   25. getSubscriptions => getAll (webhooks.subscriptionsApi)
   26. updateSubscription => update (webhooks.subscriptionsApi)
 
-[unreleased]: https://github.com/HubSpot/hubspot-api-nodejs/compare/7.0.1...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-nodejs/compare/11.1.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/v1.0.0-beta
 [1.1.0-beta]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/v1.1.0-beta
 [2.0.1]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/2.0.1
@@ -709,3 +819,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [9.1.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.1.0
 [9.1.1]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/9.1.1
 [10.0.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/10.0.0
+[10.1.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/10.1.0
+[10.2.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/10.2.0
+[11.0.0-beta.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/11.0.0-beta.0
+[11.0.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/11.0.0
+[11.1.0]: https://github.com/HubSpot/hubspot-api-nodejs/releases/tag/11.1.0

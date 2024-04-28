@@ -12,22 +12,35 @@
 
 
 export class SimplePublicObjectBatchInput {
-    'properties': { [key: string]: string; };
+    /**
+    * The name of the unique property
+    */
+    'idProperty'?: string;
+    /**
+    * The id to be updated. This can be the object id, or the unique property value of the idProperty property
+    */
     'id': string;
+    'properties': { [key: string]: string; };
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "properties",
-            "baseName": "properties",
-            "type": "{ [key: string]: string; }",
+            "name": "idProperty",
+            "baseName": "idProperty",
+            "type": "string",
             "format": ""
         },
         {
             "name": "id",
             "baseName": "id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "properties",
+            "baseName": "properties",
+            "type": "{ [key: string]: string; }",
             "format": ""
         }    ];
 
