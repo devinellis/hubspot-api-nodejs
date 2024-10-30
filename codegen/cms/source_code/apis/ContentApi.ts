@@ -3,7 +3,7 @@ import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
 import {RequestContext, HttpMethod, ResponseContext, HttpFile, HttpInfo} from '../http/http';
 import  FormData from "form-data";
-import { URLSearchParams } from 'url';
+// import { URLSearchParams } from 'url';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
 import {canConsumeForm, isCodeInRange} from '../util';
